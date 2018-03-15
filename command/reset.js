@@ -8,14 +8,8 @@ const path = require('path')
 
 module.exports = () => {
   let obj = {
-    notIE8: {
-      gitUrl:'',
-      branch:'master'
-    },
-    IE8: {
-      gitUrl:'',
-      branch:'master'
-    }
+    gitUrl:'',
+    branch:''
   }
   let settingPath = path.join(__dirname, '../setting.json')
   co(function *(){
