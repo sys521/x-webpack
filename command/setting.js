@@ -9,20 +9,12 @@ const path = require('path')
 
 module.exports = () => {
   co(function *(){
-    let notIE8 = yield prompt(chalk.yellow('is Compatible of IE8 ? (Y or N) :'))
     let gitUrl = yield prompt(chalk.yellow('please input your git repository url:'))
     let branch = yield prompt(chalk.yellow('please input your resository branch:'))
     let reg = /^git\@.+\.git$/
     if (reg.test(gitUrl)) {
-      let newConfig = {}
+      let newConfig = Object.assing({},config,{gitUrl,branch})
       let settingPath = path.join(__dirname, '../setting.json')
-      if (notIE8.toLowerCase() === 'no' || notIE8.toLowerCase() === 'n') {
-        let notIE8 = {gitUrl,branch}
-        newConfig = Object.assign({}, config, {notIE8})
-      } else {
-        let IE8 = {gitUrl,branch} 
-        newConfig = Object.assign({}, config, {IE8 })
-      }
       fs.writeFile(settingPath, JSON.stringify(newConfig),'utf-8', (err) => {
         if (err) {
           console.log(err)
